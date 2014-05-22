@@ -1,7 +1,6 @@
 defmodule ExToml do
   
   defp to_map([{k,v}|list]) when is_list(list) do
-    IO.puts "#{inspect [{k,v}|list]}"
     [{k,v}|list] |> Enum.reduce %{}, fn({key, value}, acc) -> Dict.put acc, key, to_map(value); end
   end
 
