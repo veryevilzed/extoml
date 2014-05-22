@@ -1,8 +1,10 @@
 defmodule ExToml do
   
-  defp to_map(list) when is_list(list) do
-    list |> Enum.reduce %{}, fn({key, value}, acc) -> Dict.put acc, key, to_map(value) end
+  defp to_map([{k,v}|list]) when is_list(list) do
+    [{k,v}|list] |> Enum.reduce %{}, fn({key, value}, acc) -> Dict.put acc, key, to_map(value);( ) end
   end
+
+  defp to_map(list) when is_list(list), do: list
 
   defp to_map(list), do: list
 
